@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Express</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #eef2f3, rgb(255, 255, 255));
+            color: #333;
+        }
+
+        header {
+            background: rgba(0, 86, 179, 0.9);
+            color: white;
+            padding: 0.8em 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            height: 50px; /* Ajusta la altura de la imagen */
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 1em;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #ffd700;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        .hero {
+            text-align: center;
+            margin: 2em auto;
+            background-color: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        .hero h2 {
+            color: #0056b3;
+            margin-bottom: 1em;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 1em;
+        }
+
+        .popular-destinations, .services {
+            margin: 2em auto;
+            padding: 2em;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        .popular-destinations h2, .services h2 {
+            text-align: center;
+            color: #0056b3;
+        }
+
+        .destinations, .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5em;
+        }
+
+        .destination, .service {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1em;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .destination img {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 0.5em;
+        }
+
+        .destination:hover, .service:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background: #004494;
+            color: white;
+            margin-top: 2em;
+        }
+
+        footer p {
+            margin: 0.5em 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.php">
+            <img src="activos\Logo.png" alt="Logo Fast Express">
+        </a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Nosotros</a>
+            <a href="services.html">Servicios</a>
+            <a href="routes.html">Rutas</a>
+            <a href="blog.html">Blog</a>
+            <a href="reserva.php">Reserva</a>
+            <a href="register.php">Registrarse</a>
+            <a href="login.php">Login</a>
+            <a href="historial.php">Ver Historial de Viajes</a>
+            <a href="logout.php">Cerrar Sesión</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Viaja Seguro y Cómodo con Fast Express</h2>
+            <p>Reserva tu boleto ahora y disfruta del mejor servicio de transporte.</p>
+            <img src="activos\centro-historico-de-lima.jpg" alt="Viaja Seguro y Cómodo">
+        </section>
+
+        <section class="popular-destinations">
+            <h2>Visita lugares populares</h2>
+            <div class="destinations">
+                <div class="destination">
+                    <img src="activos/lima (1).jpg" alt="Lima">
+                    <h3>Lima</h3>
+                    <p>Explora los mejores lugares con nosotros.</p>
+                </div>
+                <div class="destination">
+                    <img src="activos/cusco (2).jpg" alt="Cusco">
+                    <h3>Cusco</h3>
+                    <p>Viaja seguro y cómodo a los destinos más visitados.</p>
+                </div>
+                <div class="destination">
+                    <img src="activos/tacna (2).jpg" alt="Tacna">
+                    <h3>Tacna</h3>
+                    <p>Reserva tu boleto y vive una experiencia inolvidable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="services">
+            <h2>Servicios Destacados</h2>
+            <div class="service-list">
+                <div class="service">
+                    <h3>Transporte Eficiente</h3>
+                    <p>Viajes rápidos y puntuales para tu comodidad.</p>
+                </div>
+                <div class="service">
+                    <h3>Comodidad Garantizada</h3>
+                    <p>Disfruta de asientos cómodos y espacios amplios.</p>
+                </div>
+                <div class="service">
+                    <h3>Atención al Cliente</h3>
+                    <p>Soporte y asistencia las 24 horas del día.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Contacto: info@fastexpress.com | Tel: +51 973 894 134</p>
+        <p>&copy; 2024 Fast Express. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

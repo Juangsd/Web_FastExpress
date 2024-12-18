@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nosotros</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: white;
+        }
+        header {
+            background-color: #0056b3;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .slogan {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            width: 80%;
+            text-align: center;
+        }
+        .company-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+            width: 100%;
+        }
+        .about-us-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .company-title {
+            font-size: 2em;
+            text-align: center;
+            width: 100%;
+        }
+        .company-description {
+            text-align: justify;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .mvv-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .mvv-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .mvv-text {
+            flex: 1;
+            padding: 20px;
+        }
+        .mvv-image {
+            flex: 1;
+            text-align: center;
+        }
+        .mvv-image img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+        }
+        /* Nueva sección de fotos */
+        .team-section {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .team-member {
+            width: 45%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .team-member img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+        }
+        .team-member p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        /* Estilo para la foto grupal */
+        .group-photo {
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .group-photo img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+        }
+        .group-photo p {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        @media screen and (max-width: 768px) {
+            .team-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .team-member {
+                width: 80%;
+                margin: 10px 0;
+            }
+            .group-photo img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.php">
+            <img src="activos\Logo.png" alt="Logo Fast Express">
+        </a>
+        <nav>
+            <a href="index.php">Inicio</a>
+            <a href="about.html">Nosotros</a>
+            <a href="services.html">Servicios</a>
+            <a href="routes.html">Rutas</a>
+            <a href="blog.html">Blog</a>
+            <a href="reserva.php">Reserva</a>
+            <a href="register.php">Registrarse</a>
+            <a href="login.php">Login</a>
+        </nav>
+    </header>
+    <main class="main-content">
+        <div class="image-container">
+            <div class="slogan">FAST EXPRESS: Viajando juntos con seguridad y puntualidad.</div>
+            <img class="company-image" src="activos\conoce-los-lugares-turisticos-de-lima-en-tres-increibles-paseos-2024-1.jpg" alt="Imagen de la Empresa">
+        </div>
+
+        <div class="about-us-container">
+            <div class="company-title">¿Quiénes Somos?</div>
+            <div class="company-description">
+                <p>FAST EXPRESS es una empresa de transporte interprovincial que se dedica al traslado seguro, rápido y eficiente de pasajeros y mercancías entre diferentes provincias del país. Nos enfocamos en ofrecer una experiencia de viaje de calidad, priorizando la seguridad y la puntualidad, para que nuestros clientes confíen en nosotros cada vez que necesiten movilizarse o enviar sus productos.</p>
+                    FAST EXPRESS se caracteriza por su compromiso con el cliente y su enfoque en la mejora continua. Con una flota moderna y un equipo de profesionales capacitados, buscamos satisfacer las necesidades de movilidad de la población, conectando comunidades y facilitando el acceso a oportunidades económicas, educativas y sociales. Nuestra empresa combina prácticas tradicionales del sector transporte con innovaciones tecnológicas para optimizar rutas, reducir tiempos de espera y garantizar la máxima seguridad en cada trayecto. Además, valoramos el cuidado del medio ambiente y trabajamos para reducir nuestra huella de carbono mediante prácticas de sostenibilidad.</p>
+                    En FAST EXPRESS, comprendemos la importancia del transporte interprovincial en el desarrollo del país, y nuestro objetivo es contribuir al bienestar de la sociedad ofreciendo servicios de transporte que generen un impacto positivo en la vida de nuestros clientes y en las comunidades a las que servimos.
+                    </p>
+            </div>
+        </div>
+
+        <div class="mvv-section">
+            <div class="mvv-text">
+                <h3>Misión</h3>
+                <p>Brindar un servicio de transporte interprovincial seguro, confiable y eficiente, comprometido con la satisfacción de nuestros clientes y el desarrollo de las comunidades que servimos. Nos esforzamos por ofrecer una experiencia de viaje que supere las expectativas de nuestros usuarios, promoviendo una relación de confianza y lealtad a largo plazo.</p>
+            </div>
+            <div class="mvv-image">
+                <img src="activos\mision.jpg" alt="Misión">
+            </div>
+        </div>
+
+        <div class="mvv-section">
+            <div class="mvv-text">
+                <h3>Visión</h3>
+                <p>Convertirnos en la empresa de transporte interprovincial líder a nivel nacional, reconocida por su innovación, responsabilidad y excelencia en el servicio. Aspiramos a ser la primera opción para quienes buscan seguridad, puntualidad y comodidad en sus viajes y traslados, y a contribuir activamente al desarrollo sostenible del país mediante prácticas responsables y eficientes. En los próximos cinco años, queremos expandir nuestra cobertura a cada región del país, mejorar constantemente nuestros servicios y adoptar tecnologías que fortalezcan nuestra competitividad en el mercado.</p>
+            </div>
+            <div class="mvv-image">
+                <img src="activos\vision.jpg" alt="Visión">
+            </div>
+        </div>
+
+        <div class="mvv-section">
+            <div class="mvv-text">
+                <h3>Valores</h3>
+                <ul>
+                    <li>Seguridad: Priorizamos la seguridad de nuestros clientes y colaboradores en todas nuestras operaciones.</li>
+                    <li>Compromiso: Estamos comprometidos con la satisfacción del cliente y la mejora continua de nuestros servicios.</li>
+                    <li>Integridad: Actuamos con ética y transparencia en todas nuestras acciones.</li>
+                    <li>Innovación: Buscamos constantemente nuevas soluciones para optimizar nuestros procesos y ofrecer un mejor servicio.</li>
+                </ul>
+            </div>
+            <div class="mvv-image">
+                <img src="activos/valores.jpeg" alt="Valores">
+            </div>
+        </div>
+
+        <!-- Nueva sección de fotos -->
+        <div class="team-section">
+            <div class="team-member">
+                <img src="activos/Persona1.jpg" alt="Persona 1">
+                <p>Nelson Catunta Huisa</p>
+                <p>Gerente General</p>
+            </div>
+            <div class="team-member">
+                <img src="activos/Persona2.jpg" alt="Persona 2">
+                <p>Yonhel Mamani Crúz</p>
+                <p>Coordinador de Logística</p>
+            </div>
+            <div class="team-member">
+                <img src="activos/Persona3.jpg" alt="Persona 3">
+                <p>Nestor Ademir Ruelas Yana</p>
+                <p>Encargado de Servicio al Cliente</p>
+            </div>
+        </div>
+
+        <!-- Foto grupal -->
+        <div class="group-photo">
+            <img src="activos/Equipo FAST_EXPRESS.png" alt="Equipo de Fast Express">
+            <p>El equipo de Fast Express trabajando juntos para brindarte lo mejor.</p>
+        </div>
+    </main>
+</body>
+</html>

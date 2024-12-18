@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Rutas Disponibles</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .rutas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .ruta {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: center;
+            cursor: pointer;
+        }
+        .mapa-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+        }
+        #map {
+            width: 70%;
+            height: 400px;
+        }
+        .frase {
+            width: 25%;
+            padding: 20px;
+            font-size: 1.2em;
+            color: #555;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .modal-header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-body ul {
+            padding-left: 20px;
+        }
+        .modal-footer {
+            padding: 10px;
+            text-align: right;
+            background-color: #f4f4f4;
+        }
+        .modal-footer button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-footer button:hover {
+            background-color: #0056b3;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+    <header>
+        <a href="index.php">
+            <img src="activos\Logo.png" alt="Logo Fast Express">
+        </a>
+        <nav>
+            <a href="index.php">Inicio</a>
+            <a href="routes.html">Rutas</a>
+            <a href="services.html">Servicios</a>
+            <a href="blog.html">Blog</a>
+            <a href="reserva.php">Reserva</a>
+            <a href="register.php">Registrarse</a>
+            <a href="login.php">Login</a>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Rutas Disponibles</h2>
+        <p>Consulta nuestras rutas disponibles entre ciudades como Lima, Arequipa, Puno y más.</p>
+
+        <div class="rutas">
+            <div class="ruta" onclick="mostrarPrecios('Lima')">Lima</div>
+            <div class="ruta" onclick="mostrarPrecios('Arequipa')">Arequipa</div>
+            <div class="ruta" onclick="mostrarPrecios('Puno')">Puno</div>
+            <div class="ruta" onclick="mostrarPrecios('Cusco')">Cusco</div>
+            <div class="ruta" onclick="mostrarPrecios('Tacna')">Tacna</div>
+        </div>
+
+        <div class="mapa-container">
+            <div id="map"></div>
+            <div class="frase">
+                "Viajar no solo es movernos de un lugar a otro, es descubrir nuevas emociones y paisajes inolvidables."
+            </div>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+        <div class="modal" id="modal">
+            <div class="modal-header" id="modal-header">Precios</div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button onclick="cerrarModal()">Cerrar</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const map = L.map('map').setView([-12.0464, -77.0428], 6);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Mapa proporcionado por OpenStreetMap'
+        }).addTo(map);
+
+        const rutas = [
+            { ciudad: "Lima", coords: [-12.0464, -77.0428] },
+            { ciudad: "Arequipa", coords: [-16.4090, -71.5375] },
+            { ciudad: "Puno", coords: [-15.8402, -70.0219] },
+            { ciudad: "Cusco", coords: [-13.5319, -71.9675] },
+            { ciudad: "Tacna", coords: [-18.0139, -70.2513] }
+        ];
+
+        rutas.forEach(ruta => {
+            L.marker(ruta.coords).addTo(map).bindPopup(`<b>${ruta.ciudad}</b>`);
+        });
+
+        function mostrarPrecios(ciudad) {
+            let precios = "";
+            switch (ciudad) {
+                case "Lima":
+                    precios = `<ul>
+                        <li>Lima a Puno: Solo martes, jueves y sábado a las 8 a.m. y 3 p.m. Costo: 80 soles <button onclick="reservar('Lima', 'Puno')">Reservar</button></li>
+                    </ul>`;
+                    break;
+                case "Arequipa":
+                    precios = `<ul>
+                        <li>Arequipa a Puno: Todos los días a las 8 a.m., 1 p.m., y 7 p.m. Costo: 25 soles <button onclick="reservar('Arequipa', 'Puno')">Reservar</button></li>
+                    </ul>`;
+                    break;
+                case "Puno":
+                    precios = `<ul>
+                        <li>Puno a Lima: Solo martes, jueves y sábado a las 8 a.m. y 3 p.m. Costo: 80 soles <button onclick="reservar('Puno', 'Lima')">Reservar</button></li>
+                        <li>Puno a Cusco: Todos los días a las 8 a.m., 1 p.m., y 7 p.m. Costo: 35 soles <button onclick="reservar('Puno', 'Cusco')">Reservar</button></li>
+                        <li>Puno a Arequipa: Todos los días a las 8 a.m., 1 p.m., y 7 p.m. Costo: 25 soles <button onclick="reservar('Puno', 'Arequipa')">Reservar</button></li>
+                        <li>Puno a Tacna: Todos los días a las 8 a.m., 1 p.m., y 7 p.m. Costo: 25 soles <button onclick="reservar('Puno', 'Tacna')">Reservar</button></li>
+                    </ul>`;
+                    break;
+                case "Cusco":
+                    precios = `<ul>
+                        <li>Cusco a Puno: Todos los días a las 8 a.m., 1 p.m., y 7 p.m. Costo: 35 soles <button onclick="reservar('Cusco', 'Puno')">Reservar</button></li>
+                    </ul>`;
+                    break;
+                case "Tacna":
+                    precios = `<ul>
+                        <li>Tacna a Puno: Todos los días a las 8 a.m., 1 p.m., y 7 p.m. Costo: 25 soles <button onclick="reservar('Tacna', 'Puno')">Reservar</button></li>
+                    </ul>`;
+                    break;
+            }
+
+            document.getElementById('modal-header').textContent = `Precios desde ${ciudad}`;
+            document.getElementById('modal-body').innerHTML = precios;
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function reservar(origen, destino) {
+            window.location.href = `reserva.php?origen=${origen}&destino=${destino}`;
+        }
+
+        function cerrarModal() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
